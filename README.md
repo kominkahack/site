@@ -31,6 +31,6 @@ localhost:3000
 ## 開発時
 Gemを変更する際は、以下のようにする。
 ```sh
-$ docker exec web bundle install
-$ docker build
+$ docker-compose exec web bundle install
+$ docker-compose build
 ```
