@@ -34,3 +34,9 @@ Gemを変更する際は、以下のようにする。
 $ docker-compose exec web bundle install
 $ docker-compose build
 ```
+DBをマイグレーションする際は、以下のようにする。
+```sh
+$ docker-compose exec web rake db:migrate
+$ docker-compose down
+$ docker-compose up
+```
