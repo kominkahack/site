@@ -32,11 +32,19 @@ localhost:3000
 Gemを変更する際は、以下のようにする。
 ```sh
 $ docker-compose exec web bundle install
-$ docker-compose build
+$ sudo docker-compose build
+```
+controller, model, ...などを作成するコマンドは以下のようにする。
+```sh
+$ rails g controller post index
+$ rails g model Posts content:text
+# Linux上のDockerを使っている場合に限り、Dockerで作成されたファイルはroot権限になるので、
+# userで使えるようにする。
+$ sudo chown -R $USER:$USER .
 ```
 DBをマイグレーションする際は、以下のようにする。
 ```sh
-$ docker-compose exec web rake db:migrate
-$ docker-compose down
-$ docker-compose up
+$ sudo docker-compose exec web rake db:migrate
+$ docker-compose down # 全停止
+$ docker-compose up # 全起動
 ```
