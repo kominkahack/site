@@ -9,7 +9,7 @@
 - MySQL: 5.1.10
 
 ## Setup
-Dockerを使い環境構築をします。
+Dockerを使い環境構築をする。
 ### 1. まず、Dockerをbuildし、MySQLを初期化
 ```sh
 $ docker-compose build
@@ -36,15 +36,15 @@ $ sudo docker-compose build
 ```
 controller, model, ...などを作成するコマンドは以下のようにする。
 ```sh
-$ rails g controller post index
-$ rails g model Posts content:text
+$ docker-compose exec web rails g controller post index
+$ docker-compose exec web rails g model Posts content:text
 # Linux上のDockerを使っている場合に限り、Dockerで作成されたファイルはroot権限になるので、
 # userで使えるようにする。
 $ sudo chown -R $USER:$USER .
 ```
 DBをマイグレーションする際は、以下のようにする。
 ```sh
-$ sudo docker-compose exec web rake db:migrate
+$ sudo docker-compose exec web rails db:migrate
 $ docker-compose down # 全停止
 $ docker-compose up # 全起動
 ```
